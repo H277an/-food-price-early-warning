@@ -1,0 +1,6 @@
+@"
+venv/
+__pycache__/
+*.pyc
+db/*.db
+"@ | Out-File -Encoding utf8NoBOM .gitignore

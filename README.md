@@ -54,13 +54,15 @@ Commodity prices are highly autocorrelated month-to-month. A naive "predict no c
 | Model | Price-level Test MAE | R² |
 |---|---|---|
 | **Naive baseline** (predict no change) | **3.085** | **0.927** |
-| Random Forest (LSTM + RF) | 3.857 | 0.899 |
-| XGBoost (LSTM + XGBoost) | 4.328 | 0.886 |
-| Transformer + RF | *pending* | *pending* |
+| Model 2: LSTM + Random Forest | 3.857 | 0.899 |
+| Model 3: Transformer + Random Forest | 3.859 | 0.904 |
+| Model 1: LSTM + XGBoost | 4.328 | 0.886 |
 
 Random Forest won the Model 1 vs. Model 2 comparison — its feature importance shows a balanced reliance on weather, LSTM-extracted features, and lag features, rather than XGBoost's narrower dependence on the LSTM output alone. Random Forest was therefore selected as the downstream pairing for the Transformer comparison (Model 3).
 
-Neither hybrid model beat the naive baseline on raw point-forecast accuracy. This is reported as a genuine, expected-in-the-literature result rather than adjusted away.
+**Model 2 and Model 3 are statistically tied** (MAE differs by 0.002; R² marginally favors the Transformer). This is a genuine and informative result: self-attention did not meaningfully outperform recurrent encoding at this data scale (355 training sequences) — consistent with the well-documented fact that Transformer architectures are more data-hungry than LSTMs and typically need far larger datasets to show their advantage. Given the tie, **LSTM + Random Forest was selected as the production model** for the remaining commodities — the simpler, faster-to-train architecture, chosen on engineering grounds rather than a forced preference for the more novel one.
+
+None of the three hybrid models beat the naive baseline on raw point-forecast accuracy. This is reported as a genuine, expected-in-the-literature result rather than adjusted away.
 
 ## Key finding #2: More features made the shock classifier worse
 

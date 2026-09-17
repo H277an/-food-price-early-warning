@@ -1,0 +1,6 @@
+commodity,naive_mae,naive_r2
+Cereals,3.085,0.927
+Oils,7.09,0.867
+Sugar,5.048,0.867
+Dairy,3.013,0.926
+Meat,1.663,0.889

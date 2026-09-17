@@ -21,7 +21,7 @@ scaled = scaler.fit_transform(df[seq_cols])
 X, y, idx = [], [], []
 for i in range(SEQ_LEN, len(df)):
     X.append(scaled[i - SEQ_LEN:i])
-    y.append(df["target_next_price"].iloc[i])
+    y.append(df["target_pct_change"].iloc[i])
     idx.append(i)
 
 X = np.array(X)
@@ -66,7 +66,7 @@ lstm_features = feature_extractor.predict(X)
 
 feature_df = pd.DataFrame(lstm_features, columns=[f"lstm_feat_{i}" for i in range(16)])
 feature_df["date"] = df["date"].iloc[idx].values
-feature_df["target_next_price"] = y
+feature_df["target_pct_change"] = y
 
 feature_df.to_csv("data/processed/lstm_features.csv", index=False)
 model.save("db/lstm_model.keras")

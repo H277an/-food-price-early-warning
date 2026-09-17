@@ -32,6 +32,8 @@ for lag in [1, 2, 3, 6, 12]:
 
 # Target: next month's price (what we're predicting)
 df["target_next_price"] = df["cereals_price"].shift(-1)
+df["target_next_price"] = df["cereals_price"].shift(-1)
+df["target_pct_change"] = (df["target_next_price"] - df["cereals_price"]) / df["cereals_price"] * 100
 
 df = df.dropna().reset_index(drop=True)
 

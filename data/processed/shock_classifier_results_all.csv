@@ -1,6 +1,6 @@
-commodity,auc,total_shocks,test_months,test_shocks,best_threshold,recall_at_0.2,skipped,reason
-Cereals,0.563,36.0,200.0,12.0,0.397,0.417,False,
-Oils,0.515,71.0,200.0,35.0,0.31,0.514,False,
-Sugar,0.486,97.0,200.0,44.0,0.047,0.364,False,
-Dairy,0.479,26.0,200.0,9.0,0.019,0.111,False,
-Meat,,,,,,,True,insufficient_shocks
+commodity,auc,threshold_value_pct,total_shocks,test_months_evaluated,test_shocks_evaluated,best_threshold,recall_at_0.2,skipped
+Cereals,0.621,4.61,42,280,28,0.029,0.286,False
+Oils,0.425,7.21,42,280,31,0.002,0.129,False
+Sugar,0.522,9.53,42,280,30,0.026,0.2,False
+Dairy,0.476,4.06,42,280,28,0.267,0.286,False
+Meat,0.579,2.96,42,280,26,0.266,0.308,False
